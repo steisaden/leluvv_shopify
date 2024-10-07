@@ -17,8 +17,8 @@
                     </div>  
                 </div>             
             {% when 'article_published_date' %}
-                <div class="flex items-start justify-start">
-                    <div class="max-w-7xl text-center ml-4">
+                <div class="flex items-center justify-center">
+                    <div class="max-w-7xl text-center ">
                         {% if section.settings.enable_published_date %}
                             <time datetime="{{ article.published_at | date: format: 'on_date' }}">{{ article.published_at | date: format: 'on_date' }}</time>
                         {% endif %}
@@ -38,9 +38,8 @@
                 </div>
             {% when 'article_content' %}
                 <div class="flex items-center justify-center m-4">
-                    <div class="max-w-4xl">{{ article.content }}</div>
+                    <div class="max-w-7xl">{{ article.content }}</div>
                 </div>
-                
             
             {% else %}
                 
@@ -49,7 +48,13 @@
 </article>
 
 {% if blog.comments_enabled? %}
-    
+    <div id="comments" class="my-8">
+        {% if article.comments_count > 0  %}
+            
+        {% else %}
+            There are no comments in this article.
+        {% endif %}
+    </div>
 {% endif %}
 
 
